@@ -1,5 +1,6 @@
 package com.weslleycabral.workshopmongodb.config;
 
+import com.weslleycabral.workshopmongodb.dto.AuthorDTO;
 import com.weslleycabral.workshopmongodb.entities.User;
 import com.weslleycabral.workshopmongodb.entities.Post;
 import com.weslleycabral.workshopmongodb.repository.PostRepository;
@@ -34,10 +35,10 @@ public class Instantiation implements CommandLineRunner {
         User u2 = new User(null, "Alex Green", "alex@gmail.com");
         User u3 = new User(null, "Bob Grey", "bob@gmail.com");
 
-       userRepository.saveAll(Arrays.asList(u1, u2, u3));
+        userRepository.saveAll(Arrays.asList(u1, u2, u3));
 
-        Post post1 = new Post(null, format.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", u1);
-        Post post2 = new Post(null, format.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje!", u1);
+        Post post1 = new Post(null, format.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", new AuthorDTO(u1));
+        Post post2 = new Post(null, format.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(u2));
 
         postRepository.saveAll(Arrays.asList(post1, post2));
     }
