@@ -1,6 +1,7 @@
 package com.weslleycabral.workshopmongodb.config;
 
 import com.weslleycabral.workshopmongodb.dto.AuthorDTO;
+import com.weslleycabral.workshopmongodb.dto.CommentDTO;
 import com.weslleycabral.workshopmongodb.entities.User;
 import com.weslleycabral.workshopmongodb.entities.Post;
 import com.weslleycabral.workshopmongodb.repository.PostRepository;
@@ -39,6 +40,12 @@ public class Instantiation implements CommandLineRunner {
 
         Post post1 = new Post(null, format.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", new AuthorDTO(u1));
         Post post2 = new Post(null, format.parse("23/03/2018"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(u2));
+
+        CommentDTO co1 = new CommentDTO("Boa viagem Fulano De Tal", format.parse("21/12/2022"), new AuthorDTO(u1));
+        CommentDTO co2 = new CommentDTO("Tomara que dê errado!", format.parse("07/08/2024"), new AuthorDTO(u3));
+
+        post1.getCommentDTO().add(co2);
+        post1.getCommentDTO().add(co1);
 
         postRepository.saveAll(Arrays.asList(post1, post2));
 
