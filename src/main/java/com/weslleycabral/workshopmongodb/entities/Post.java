@@ -3,12 +3,13 @@ package com.weslleycabral.workshopmongodb.entities;
 import com.weslleycabral.workshopmongodb.dto.AuthorDTO;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-@EntityScan
+@Document(collection = "posts")
 public class Post implements Serializable {
 
     private static final Long serialVersionUID = 1L;
