@@ -24,9 +24,12 @@ public class PostService {
             throw new ObjectNotFoundException("This post not existing");
         }
     }
-
     public List<Post> findAll() {
         List <Post> posts = repository.findAll();
         return posts;
+    }
+
+    public List<Post> findByTitle(String text) {
+        return repository.findByTitleContainingIgnoreCase(text);
     }
 }
